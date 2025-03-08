@@ -6,4 +6,22 @@
     3. Type your code immediately after comment. Don't leave any blank line.
 */
 
-SELECT NAME FROM CITY WHERE POPULATION>120000 AND COUNTRYCODE='USA';
+WITH CityLengths AS (
+    SELECT CITY, LENGTH(CITY) AS name_length
+    FROM STATION
+)
+(
+    SELECT CITY, name_length
+    FROM CityLengths
+    ORDER BY name_length ASC, CITY ASC
+    FETCH FIRST 1 ROW ONLY
+)
+UNION ALL
+(
+    SELECT CITY, name_length
+    FROM CityLengths
+    ORDER BY name_length DESC, CITY ASC
+    FETCH FIRST 1 ROW ONLY
+);
+
+

@@ -6,4 +6,4 @@
     3. Type your code immediately after comment. Don't leave any blank line.
 */
 
-SELECT NAME FROM CITY WHERE POPULATION>120000 AND COUNTRYCODE='USA';
+SELECT DISTINCT CITY FROM STATION WHERE LOWER(SUBSTR(CITY,1,1)) IN ('a','e','i','o','u');
